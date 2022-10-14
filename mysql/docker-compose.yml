@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  mysql:
+    container_name: mysql:alpine
+    mem_limit: 1024m
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: store
+      MYSQL_TCP_PORT: 3306
+    ports:
+      - "3306:3306"
+    networks:
+      - utils
+
+networks:
+  utils: 
+    name: utils
+

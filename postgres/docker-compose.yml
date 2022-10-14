@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:alpine
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    volumes:
+      - postgres:/data/postgres
+    networks:
+      - utils
+
+networks:
+  utils: 
+    name: utils
+
+volumes:
+    postgres:
+        driver: local
